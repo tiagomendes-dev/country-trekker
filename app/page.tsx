@@ -1,10 +1,8 @@
-"use client";
-
 import Table from "@/app/components/table";
 
-export default function Home() {
+export default async function Home() {
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center p-24 ">
       <Table />
     </div>
   );
