@@ -1,7 +1,11 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { useState } from "react";
 
 import { getCountries } from "@/app/api/country";
+import { Country } from "@/app/types/country";
 
 import {
   ChevronLeft,
@@ -10,11 +14,16 @@ import {
   ChevronsRight,
 } from "lucide-react";
 
-export default async function Table() {
-  const [page, setPage] = useState(1);
-  const countries = await getCountries();
+export default function Table() {
+  const router = useRouter();
+  const [countries, setCountries] = useState<Country[] | null>(null);
+  const [page, setPage] = useState<number>(1);
 
-  const totalPages = Math.ceil(countries.length / 10);
+  const totalPages = Math.ceil((countries?.length ?? 0) / 10);
+
+  useEffect(() => {
+    getCountries().then(setCountries);
+  }, []);
 
   function goToFirstPage() {
     setPage(1);
@@ -30,7 +39,7 @@ export default async function Table() {
   }
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto rounded-lg shadow">
       <table className="table">
         {/* head */}
         <thead>
@@ -41,24 +50,30 @@ export default async function Table() {
           </tr>
         </thead>
         <tbody>
-          {countries.slice((page - 1) * 10, page * 10).map((country) => (
-            <tr className="hover" key={country.name.common}>
-              <th>{country.translations.por.common}</th>
-              <td>{country.translations.por.official}</td>
-              <td align="right">
-                <Image
-                  src={country.flags.svg}
-                  alt={country.flags.alt}
-                  width={20}
-                  height={20}
-                />
-              </td>
-            </tr>
-          ))}
+          {countries
+            ? countries.slice((page - 1) * 10, page * 10).map((country) => (
+                <tr
+                  className="hover cursor-pointer"
+                  key={country.name.common}
+                  onClick={() => router.push(`/country/${country.name.common}`)}
+                >
+                  <th>{country.translations.por.common}</th>
+                  <td>{country.translations.por.official}</td>
+                  <td align="right">
+                    <Image
+                      src={country.flags.svg}
+                      alt={country.flags.alt}
+                      width={20}
+                      height={20}
+                    />
+                  </td>
+                </tr>
+              ))
+            : null}
         </tbody>
         <tfoot>
           <tr>
-            <th align="left">Mostrando 10 de {countries.length} itens</th>
+            <th align="left">Mostrando 10 de {countries?.length ?? 0} itens</th>
             <th align="right" colSpan={2}>
               <div className="join">
                 <button
