@@ -25,7 +25,7 @@ export default function RootLayout({
         }
       >
         <Header />
-        {children}
+        <div className="min-h-[calc(100vh-7.275rem)] p-4">{children}</div>
         <Footer />
       </body>
     </html>
