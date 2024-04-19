@@ -1,8 +1,12 @@
 export type Country = {
+  length: number;
   name: {
     common: string;
   };
   capital: string;
+  capitalInfo: {
+    latlng: [number, number];
+  };
   region: string;
   subregion: string;
   population: number;
