@@ -62,7 +62,7 @@ export default async function CountryPage({
 
         {borderCountries && (
           <section>
-            <h3 className="mt-12 text-2xl font-semibold text-gray-800">
+            <h3 className="mt-12 text-2xl text-center font-semibold text-gray-800">
               Países que fazem fronteira
             </h3>
             <div className="flex items-center justify-center gap-2">
