@@ -40,7 +40,7 @@ export default function Table() {
 
   return (
     <div className="overflow-x-auto rounded-lg shadow">
-      <table className="table">
+      <table className="table w-[calc(100vw-50rem)]">
         {/* head */}
         <thead>
           <tr>
@@ -57,14 +57,23 @@ export default function Table() {
                   key={country.name.common}
                   onClick={() => router.push(`/country/${country.name.common}`)}
                 >
-                  <th>{country.translations.por.common}</th>
-                  <td>{country.translations.por.official}</td>
-                  <td align="right">
+                  <td className="max-w-2/6 w-2/6 font-bold">
+                    <p className="overflow-hidden text-ellipsis whitespace-nowrap">
+                      {country.translations.por.common}
+                    </p>
+                  </td>
+                  <td className="max-w-3/6 w-3/6 overflow-hidden text-ellipsis">
+                    <p className="overflow-hidden text-ellipsis whitespace-nowrap">
+                      {country.translations.por.official}
+                    </p>
+                  </td>
+                  <td align="right" className="max-w-1/6 w-1/6">
                     <Image
                       src={country.flags.svg}
                       alt={country.flags.alt}
-                      width={20}
-                      height={20}
+                      className="h-3 w-5"
+                      width={16}
+                      height={24}
                     />
                   </td>
                 </tr>
