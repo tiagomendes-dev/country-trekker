@@ -20,12 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body
-        className={cn(
-          "bg-gradient-to-tr from-blue-50 to-blue-100 w-full h-screen",
-          inter.className,
-        )}
-      >
+      <body className={cn("bg-blue-50", inter.className)}>
         <Header />
         {children}
       </body>

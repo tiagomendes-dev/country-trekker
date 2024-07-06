@@ -14,7 +14,7 @@ export default function Map({ lon, lan }: Props) {
     <div className="w-full">
       <MapContainer
         style={{
-          height: "100vh",
+          height: "60vh",
           width: "fit-contain",
           borderRadius: "0.75rem",
           backgroundSize: "cover",
