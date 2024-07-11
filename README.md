@@ -79,7 +79,7 @@ Este projeto está sob licença do MIT. Para mais detalhes, consulte o arquivo [
 
 &#xa0;
 
-<p align="center">Feito com :heart: por <a href="https://github.com/tiagomendes-dev/" target="_blank">Tiago Mendes</a></p>
+<p align="center">Feito com :heart: por <a href="https://www.tiagomendes.dev/" target="_blank">Tiago Mendes</a></p>
 
 &#xa0;
 
